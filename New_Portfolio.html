@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOTCHOU Pedro — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#08080a;
+  --noir-doux:#111114;
+  --noir-carte:#15151a;
+  --or:#c9a84c;
+  --or-clair:#e8d9a8;
+  --or-pale:rgba(201,168,76,0.12);
+  --creme:#f3efe6;
+  --gris:#8b8b93;
+  --ligne:rgba(201,168,76,0.18);
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Outfit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--noir);
+  color:var(--creme);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+.conteneur{max-width:1180px;margin:0 auto;padding:0 6vw;}
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:18px 6vw;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(8,8,10,0.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--ligne);
+}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:500;letter-spacing:.04em;color:var(--creme);}
+.logo span{color:var(--or);}
+nav ul{display:flex;gap:40px;list-style:none;}
+nav a{
+  color:var(--creme);text-decoration:none;
+  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  position:relative;padding-bottom:6px;opacity:.75;transition:opacity .3s ease;
+}
+nav a::after{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:1px;background:var(--or);transition:width .35s ease;
+}
+nav a:hover{opacity:1;}
+nav a:hover::after{width:100%;}
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;padding-top:90px;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-20%;right:-15%;
+  width:60vw;height:60vw;
+  background:radial-gradient(circle,var(--or-pale) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grille{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--ligne) 1px,transparent 1px),linear-gradient(90deg,var(--ligne) 1px,transparent 1px);
+  background-size:80px 80px;opacity:.25;
+  mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+  pointer-events:none;
+}
+.hero-contenu{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.3fr 0.7fr;
+  gap:60px;align-items:center;width:100%;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:24px;font-size:.78rem;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--or);
+}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--or);}
+.hero h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(2.8rem,6.5vw,5.2rem);line-height:1.05;letter-spacing:.01em;
+}
+.hero h1 em{font-style:italic;color:var(--or);font-weight:400;}
+.hero p.intro{margin-top:28px;max-width:520px;color:var(--gris);font-size:1.05rem;font-weight:300;}
+.hero-actions{margin-top:42px;display:flex;gap:20px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 34px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--or);color:var(--noir);background:var(--or);
+  transition:all .4s ease;position:relative;overflow:hidden;
+}
+.btn:hover{background:transparent;color:var(--or);cursor:pointer;}
+.btn.f{background:transparent;color:var(--creme);border-color:var(--ligne);}
+.btn.f:hover{border-color:var(--or);color:var(--or);}
+.hero-panneau{
+  position:relative;border:1px solid var(--ligne);
+  padding:36px 30px;background:linear-gradient(160deg,var(--noir-carte),var(--noir-doux));
+}
+.hero-panneau::before{
+  content:'';position:absolute;top:-1px;left:-1px;
+  width:36px;height:36px;border-top:1px solid var(--or);border-left:1px solid var(--or);
+}
+.hero-panneau::after{
+  content:'';position:absolute;bottom:-1px;right:-1px;
+  width:36px;height:36px;border-bottom:1px solid var(--or);border-right:1px solid var(--or);
+}
+.statut{
+  display:flex;align-items:center;gap:10px;
+  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--or-clair);margin-bottom:28px;
+}
+.pv{
+  width:8px;height:8px;border-radius:50%;background:#7fd99a;
+  box-shadow:0 0 0 0 rgba(127,217,154,.6);animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(127,217,154,.55);}
+  70%{box-shadow:0 0 0 8px rgba(127,217,154,0);}
+  100%{box-shadow:0 0 0 0 rgba(127,217,154,0);}
+}
+.stat-ligne{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid var(--ligne);
+}
+.stat-ligne:last-child{border-bottom:none;}
+.stat-nombre{font-family:var(--serif);font-size:2.3rem;color:var(--or);font-weight:500;}
+.stat-label{font-size:.78rem;color:var(--gris);text-align:right;max-width:160px;letter-spacing:.04em;}
+section{padding:130px 0;position:relative;}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:var(--or);margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:40px;height:1px;background:var(--or);}
+.titre-section{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4.5vw,3.4rem);margin-bottom:18px;}
+.titre-section em{font-style:italic;color:var(--or);font-weight:400;}
+.sous-titre{color:var(--gris);max-width:580px;font-size:1rem;}
+.apropos-texte{max-width:860px;margin-top:60px;}
+.apropos-texte p{color:var(--gris);margin-bottom:20px;font-size:1rem;}
+.apropos-texte strong{color:var(--creme);font-weight:500;}
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
+.badge{
+  border:1px solid var(--ligne);padding:10px 20px;
+  font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--or-clair);
+  transition:border-color .3s ease,color .3s ease;
+}
+.badge:hover{border-color:var(--or);color:var(--or);}
+.competences-grille{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;margin-top:60px;border:1px solid var(--ligne);background:var(--ligne);
+}
+.carte-competence{background:var(--noir);padding:38px 34px;transition:background .4s ease;}
+.carte-competence:hover{background:var(--noir-carte);}
+.carte-competence h3{font-family:var(--serif);font-size:1.5rem;font-weight:500;margin-bottom:8px;color:var(--or-clair);}
+.carte-competence .num{font-size:.75rem;color:var(--or);letter-spacing:.2em;margin-bottom:14px;display:block;}
+.carte-competence p{color:var(--gris);font-size:.92rem;margin-bottom:22px;}
+.barre{margin-bottom:14px;}
+.barre-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--creme);margin-bottom:6px;letter-spacing:.05em;}
+.barre-fond{height:2px;background:var(--ligne);position:relative;overflow:hidden;}
+.barre-remplissage{position:absolute;left:0;top:0;height:100%;background:var(--or);width:var(--w);}
+.projets-grille{
+  display:grid;grid-template-columns:1.3fr 0.7fr;
+  gap:1px;margin-top:60px;border:1px solid var(--ligne);background:var(--ligne);
+}
+.projet-vedette{
+  background:var(--noir-carte);padding:48px;
+  grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;
+}
+.projet-tag{
+  display:inline-block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--or);border:1px solid var(--or);padding:6px 14px;margin-bottom:24px;width:fit-content;
+}
+.projet-vedette h3{font-family:var(--serif);font-size:2rem;font-weight:500;margin-bottom:14px;}
+.projet-vedette p{color:var(--gris);margin-bottom:26px;font-size:.97rem;}
+.terminal{
+  background:var(--noir);border:1px solid var(--ligne);border-radius:4px;
+  padding:20px 22px;font-family:'Courier New',monospace;font-size:.82rem;color:#a9e6b8;margin-bottom:26px;
+}
+.lt{margin-bottom:6px;opacity:0;animation:tape .5s ease forwards;}
+.lt:nth-child(1){animation-delay:.3s;}
+.lt:nth-child(2){animation-delay:.9s;}
+.lt:nth-child(3){animation-delay:1.5s;}
+.lt:nth-child(4){animation-delay:2.1s;}
+.lt:nth-child(5){animation-delay:2.7s;}
+.lt:nth-child(6){animation-delay:3.3s;}
+.prompt{color:var(--or);}
+@keyframes tape{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.projet-meta{display:flex;gap:10px;flex-wrap:wrap;}
+.tag-meta{font-size:.72rem;letter-spacing:.08em;color:var(--gris);border:1px solid var(--ligne);padding:6px 14px;}
+.projet-secondaire{background:var(--noir);padding:40px;transition:background .4s ease;}
+.projet-secondaire:hover{background:var(--noir-carte);}
+.projet-secondaire .num{font-family:var(--serif);color:var(--or);font-size:.85rem;letter-spacing:.2em;}
+.projet-secondaire h3{font-family:var(--serif);font-size:1.5rem;font-weight:500;margin:14px 0 10px;}
+.projet-secondaire p{color:var(--gris);font-size:.92rem;margin-bottom:18px;}
+.contact-grille{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;margin-top:60px;}
+.contact-infos .ligne-contact{display:flex;flex-direction:column;padding:24px 0;border-bottom:1px solid var(--ligne);}
+.contact-infos .ligne-contact:first-child{padding-top:0;}
+.contact-infos .label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:8px;}
+.contact-infos .valeur{font-family:var(--serif);font-size:1.3rem;color:var(--creme);}
+.contact-infos a.valeur{color:var(--creme);text-decoration:none;transition:color .3s ease;}
+.contact-infos a.valeur:hover{color:var(--or);}
+form{display:flex;flex-direction:column;gap:26px;}
+.champ{position:relative;}
+.champ label{display:block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin-bottom:10px;}
+.champ input,.champ textarea{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--ligne);
+  color:var(--creme);font-family:var(--sans);font-size:1rem;padding:10px 0;
+  outline:none;transition:border-color .3s ease;resize:none;
+}
+.champ input:focus,.champ textarea:focus{border-color:var(--or);}
+form .btn{align-self:flex-start;margin-top:10px;border:1px solid var(--or);}
+footer{border-top:1px solid var(--ligne);padding:50px 0;}
+.footer-grille{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-grille p{color:var(--gris);font-size:.85rem;}
+.reseaux{display:flex;gap:24px;}
+.reseaux a{color:var(--gris);text-decoration:none;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s ease;}
+.reseaux a:hover{color:var(--or);}
+@media(max-width:900px){
+  .hero-contenu{grid-template-columns:1fr;}
+  .hero-panneau{order:-1;}
+  .competences-grille{grid-template-columns:1fr;}
+  .projets-grille{grid-template-columns:1fr;}
+  .projet-vedette{grid-row:auto;}
+  .contact-grille{grid-template-columns:1fr;gap:50px;}
+  nav ul{display:none;}
+  section{padding:90px 0;}
+  .conteneur{padding:0 7vw;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">T<span>.</span>PEDRO</div>
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="accueil">
+  <div class="hero-grille"></div>
+  <div class="conteneur hero-contenu">
+    <div>
+      <div class="hero-eyebrow">Sécurité des systèmes informatiques</div>
+      <h1>TOTCHOU Pedro<br><em>futur expert</em> en cybersécurité</h1>
+      <p class="intro">
+        Étudiant en 1ère année à HECM Porto-Novo, je construis chaque jour les bases
+        techniques et analytiques qui feront de moi un professionnel de la sécurité
+        informatique. Ambitieux, rigoureux, orienté solutions.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Me contacter</a>
+        <a href="#projets" class="btn f">Voir mes projets</a>
+      </div>
+    </div>
+    <div class="hero-panneau">
+      <div class="statut"><span class="pv"></span> Disponible pour un stage</div>
+      <div class="stat-ligne">
+        <span class="stat-nombre">1ère</span>
+        <span class="stat-label">Année Licence — Sécurité des Systèmes Informatiques</span>
+      </div>
+      <div class="stat-ligne">
+        <span class="stat-nombre">04</span>
+        <span class="stat-label">Projets techniques initiés cette année</span>
+      </div>
+      <div class="stat-ligne">
+        <span class="stat-nombre">HECM</span>
+        <span class="stat-label">Hautes Études Commerciales et de Management, Porto-Novo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apropos">
+  <div class="conteneur">
+    <div class="eyebrow">Qui suis-je</div>
+    <h2 class="titre-section">Construire, apprendre, <em>dépasser</em></h2>
+    <div class="apropos-texte">
+      <p>
+        Je m'appelle <strong>TOTCHOU Pedro</strong>, étudiant en <strong>Licence 1 — Sécurité des Systèmes Informatiques</strong>
+        à HECM Porto-Novo. Mon ambition est claire : devenir un expert capable de concevoir et d'opérer
+        des architectures de sécurité robustes, de détecter les menaces avant qu'elles se concrétisent,
+        et de conseiller des organisations sur leur posture de cybersécurité.
+      </p>
+      <p>
+        Dès ma première année, j'ai choisi d'aller au-delà du programme officiel. Je travaille activement
+        sur des labs pratiques, je lis des writeups de CTF, j'explore les fondamentaux des réseaux et
+        des systèmes sur Linux. Chaque notion apprise en cours devient un point de départ pour aller plus loin.
+      </p>
+      <p>
+        Ce qui me motive : comprendre comment les systèmes fonctionnent en profondeur pour anticiper comment
+        ils peuvent être compromis. La défense sans compréhension de l'attaque, ce n'est pas de la sécurité.
+      </p>
+      <div class="badges">
+        <span class="badge">HECM Porto-Novo</span>
+        <span class="badge">Linux & réseaux</span>
+        <span class="badge">Veille offensive</span>
+        <span class="badge">CTF — débutant</span>
+        <span class="badge">Ambition long terme</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="conteneur">
+    <div class="eyebrow">Mes compétences</div>
+    <h2 class="titre-section">Des bases <em>solides</em></h2>
+    <p class="sous-titre">
+      Un niveau honnête, construit avec méthode. Chaque barre reflète ce que je maîtrise
+      réellement — pas ce que j'aspire à maîtriser.
+    </p>
+    <div class="competences-grille">
+      <div class="carte-competence">
+        <span class="num">01</span>
+        <h3>Systèmes Linux</h3>
+        <p>Navigation, gestion des droits, bash de base, machine virtuelle VirtualBox.</p>
+        <div class="barre">
+          <div class="barre-label"><span>Commandes shell</span><span>45%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:45%"></div></div>
+        </div>
+        <div class="barre">
+          <div class="barre-label"><span>Gestion des permissions</span><span>35%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:35%"></div></div>
+        </div>
+      </div>
+      <div class="carte-competence">
+        <span class="num">02</span>
+        <h3>Réseaux & protocoles</h3>
+        <p>Modèle OSI, TCP/IP, adressage IPv4, premiers pas avec Wireshark.</p>
+        <div class="barre">
+          <div class="barre-label"><span>Théorie réseau</span><span>50%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:50%"></div></div>
+        </div>
+        <div class="barre">
+          <div class="barre-label"><span>Analyse de trames</span><span>25%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:25%"></div></div>
+        </div>
+      </div>
+      <div class="carte-competence">
+        <span class="num">03</span>
+        <h3>Sécurité informatique</h3>
+        <p>Taxonomie des menaces, vecteurs d'attaque courants, notions de cryptographie.</p>
+        <div class="barre">
+          <div class="barre-label"><span>Connaissance des attaques</span><span>40%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:40%"></div></div>
+        </div>
+        <div class="barre">
+          <div class="barre-label"><span>Cryptographie de base</span><span>30%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:30%"></div></div>
+        </div>
+      </div>
+      <div class="carte-competence">
+        <span class="num">04</span>
+        <h3>Développement Web</h3>
+        <p>Structuration de pages web sémantiques et stylisation d'interfaces utilisateurs.</p>
+        <div class="barre">
+          <div class="barre-label"><span>HTML</span><span>70%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:70%"></div></div>
+        </div>
+        <div class="barre">
+          <div class="barre-label"><span>CSS</span><span>55%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:55%"></div></div>
+        </div>
+      </div>
+      <div class="carte-competence">
+        <span class="num">05</span>
+        <h3>Programmation</h3>
+        <p>Maîtrise de la logique algorithmique, langages orientés objet et système.</p>
+        <div class="barre">
+          <div class="barre-label"><span>Langage C</span><span>50%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:50%"></div></div>
+        </div>
+        <div class="barre">
+          <div class="barre-label"><span>C#</span><span>45%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:45%"></div></div>
+        </div>
+      </div>
+      <div class="carte-competence">
+        <span class="num">06</span>
+        <h3>Bases de données</h3>
+        <p>Modélisation, requêtage relationnel complexe et gestion des données.</p>
+        <div class="barre">
+          <div class="barre-label"><span>MySQL</span><span>55%</span></div>
+          <div class="barre-fond"><div class="barre-remplissage" style="--w:55%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="conteneur">
+    <div class="eyebrow">Mes projets</div>
+    <h2 class="titre-section">Théorie mise en <em>pratique</em></h2>
+    <p class="sous-titre">
+      Des projets concrets, réalisés par choix autant que par obligation. Chacun m'a
+      obligé à sortir de ma zone de confort et à chercher des réponses par moi-même.
+    </p>
+    <div class="projets-grille">
+      <div class="projet-vedette">
+        <div>
+          <span class="projet-tag">Projet phare</span>
+          <h3>Lab réseau virtualisé avec détection d'intrusion</h3>
+          <p>
+            Mise en place d'un réseau de 3 machines virtuelles sous VirtualBox — un attaquant
+            Kali Linux, une cible Ubuntu Server et un routeur pfSense. Configuration de Snort
+            comme IDS pour détecter des scans Nmap et tentatives de connexion SSH par force brute.
+            Analyse des alertes et rédaction d'un rapport de synthèse.
+          </p>
+          <div class="terminal">
+            <div class="lt"><span class="prompt">pedro@kali:~$</span> nmap -sV 192.168.56.10</div>
+            <div class="lt">Starting Nmap 7.94 — Host is up (0.0012s latency)</div>
+            <div class="lt">22/tcp  open  ssh     OpenSSH 8.9</div>
+            <div class="lt">80/tcp  open  http    Apache httpd 2.4.52</div>
+            <div class="lt"><span class="prompt">snort@ids:~$</span> tail -f /var/log/snort/alert</div>
+            <div class="lt">[**] [1:1000001] Scan détecté depuis 192.168.56.20 [**]</div>
+          </div>
+        </div>
+        <div class="projet-meta">
+          <span class="tag-meta">Kali Linux</span>
+          <span class="tag-meta">VirtualBox</span>
+          <span class="tag-meta">Snort IDS</span>
+          <span class="tag-meta">pfSense</span>
+          <span class="tag-meta">Nmap</span>
+        </div>
+      </div>
+      <div class="projet-secondaire">
+        <span class="num">02</span>
+        <h3>Script Python d'audit de mots de passe</h3>
+        <p>
+          Développement d'un script Python qui analyse un fichier de mots de passe et évalue leur
+          robustesse : longueur, présence de caractères spéciaux, détection dans une wordlist
+          courante (top 1000). Génération d'un rapport HTML avec statistiques.
+        </p>
+        <div class="projet-meta">
+          <span class="tag-meta">Python</span>
+          <span class="tag-meta">Sécurité</span>
+          <span class="tag-meta">Audit</span>
+        </div>
+      </div>
+      <div class="projet-secondaire">
+        <span class="num">03</span>
+        <h3>Analyse de trafic réseau avec Wireshark</h3>
+        <p>
+          Capture et analyse d'un trafic HTTP non chiffré sur un réseau local pour identifier
+          des credentials transmis en clair. Rédaction d'un rapport illustrant les risques
+          des protocoles non sécurisés et les contre-mesures (HTTPS, VPN).
+        </p>
+        <div class="projet-meta">
+          <span class="tag-meta">Wireshark</span>
+          <span class="tag-meta">HTTP/HTTPS</span>
+          <span class="tag-meta">OSINT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="conteneur">
+    <div class="eyebrow">Contact</div>
+    <h2 class="titre-section">Discutons de <em>cybersécurité</em></h2>
+    <p class="sous-titre">
+      Stage, collaboration, échange technique ou simplement envie de partager des ressources ?
+      Je réponds toujours.
+    </p>
+    <div class="contact-grille">
+      <div class="contact-infos">
+        <div class="ligne-contact">
+          <span class="label">Email</span>
+          <a class="valeur" href="mailto:totchoupedro@gmail.com">totchoupedro@gmail.com</a>
+        </div>
+        <div class="ligne-contact">
+          <span class="label">WhatsApp</span>
+          <a class="valeur" href="https://wa.me/2290143625983" target="_blank" rel="noopener">+229 01 43 62 59 83</a>
+        </div>
+        <div class="ligne-contact">
+          <span class="label">LinkedIn</span>
+          <a class="valeur" href="https://www.linkedin.com/in/pedro-totchou-9154793aa?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">Pedro TOTCHOU</a>
+        </div>
+        <div class="ligne-contact">
+          <span class="label">Instagram</span>
+          <a class="valeur" href="https://www.instagram.com/pedroclarktotchou/" target="_blank" rel="noopener">@pedroclarktotchou</a>
+        </div>
+      </div>
+      <form action="https://formspree.io/f/xojzbdro" method="POST">
+        <div class="champ">
+          <label for="nom">Nom complet</label>
+          <input type="text" id="nom" name="name" placeholder="Votre nom" required>
+        </div>
+        <div class="champ">
+          <label for="email">Adresse email</label>
+          <input type="email" id="email" name="_replyto" placeholder="votre@email.com" required>
+        </div>
+        <div class="champ">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Votre message..." required></textarea>
+        </div>
+        <button type="submit" class="btn">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="conteneur footer-grille">
+    <p>© 2026 TOTCHOU Pedro — Tous droits réservés.</p>
+    <div class="reseaux">
+      <a href="mailto:totchoupedro@gmail.com">Email</a>
+      <a href="https://wa.me/2290143625983" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/pedro-totchou-9154793aa?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/pedroclarktotchou/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
